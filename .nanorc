@@ -1,0 +1,47 @@
+set autoindent
+set backup
+set backupdir "/Users/iNut/tmp"
+set backwards
+set brackets ""')>]}"
+set casesensitive
+set matchbrackets "(<[{)>]}"
+set regexp
+set morespace
+set multibuffer
+set smooth
+set tempfile
+set boldtext
+set historylog
+set suspend
+set tabsize 2
+set const
+
+set softwrap
+
+include "/Users/iNut/local/share/nano/cmake.nanorc"
+include "/Users/iNut/local/share/nano/fortran.nanorc"
+include "/Users/iNut/local/share/nano/html.nanorc"
+include "/Users/iNut/local/share/nano/mutt.nanorc"
+include "/Users/iNut/local/share/nano/ocaml.nanorc"
+include "/Users/iNut/local/share/nano/php.nanorc"
+include "/Users/iNut/local/share/nano/ruby.nanorc"
+include "/Users/iNut/local/share/nano/tex.nanorc"
+include "/Users/iNut/local/share/nano/awk.nanorc"
+include "/Users/iNut/local/share/nano/css.nanorc"
+include "/Users/iNut/local/share/nano/gentoo.nanorc"
+include "/Users/iNut/local/share/nano/java.nanorc"
+include "/Users/iNut/local/share/nano/man.nanorc"
+include "/Users/iNut/local/share/nano/nanorc.nanorc"
+include "/Users/iNut/local/share/nano/patch.nanorc"
+include "/Users/iNut/local/share/nano/pov.nanorc"
+include "/Users/iNut/local/share/nano/sh.nanorc"
+include "/Users/iNut/local/share/nano/xml.nanorc"
+include "/Users/iNut/local/share/nano/c.nanorc"
+include "/Users/iNut/local/share/nano/debian.nanorc"
+include "/Users/iNut/local/share/nano/groff.nanorc"
+include "/Users/iNut/local/share/nano/makefile.nanorc"
+include "/Users/iNut/local/share/nano/mgp.nanorc"
+include "/Users/iNut/local/share/nano/objc.nanorc"
+include "/Users/iNut/local/share/nano/perl.nanorc"
+include "/Users/iNut/local/share/nano/python.nanorc"
+include "/Users/iNut/local/share/nano/tcl.nanorc"
