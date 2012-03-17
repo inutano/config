@@ -1,0 +1,14 @@
+[user]
+  name = tazro inutano ohta
+  email = inutano@gmail.com
+[core]
+  autocrlf = input
+  safecrlf = true
+[alias]
+  co = checkout
+  cmt = commit -m
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
