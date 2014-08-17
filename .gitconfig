@@ -13,4 +13,4 @@
   type = cat-file -t
   dump = cat-file -p
 [color]
-	ui = auto
+  ui = auto
