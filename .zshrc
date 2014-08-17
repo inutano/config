@@ -45,13 +45,19 @@ autoload -U colors; colors
 setopt prompt_subst
 unsetopt transient_rprompt
 
-if [ $SSH_CONNECTION ] || [ $REMOTEHOST ]; then
-  PROMPT='%{%(!.$bg[default].%(?.$bg[blue].$bg[blue]))%}%n@%m:%(5~,%-2~/.../%2~,%~)%#%{$reset_color%} '
-  RPROMPT='%{%(!.$bg[default].%(?.$bg[blue].$bg[blue]))%}[`date +%Y/%m/%d` %T]%{$reset_color%}'
-else
-  PROMPT='%{%(!.$bg[default].%(?.$bg[yellow].$bg[yellow]))%}%n@%m:%(5~,%-2~/.../%2~,%~)%#%{$reset_color%} '
-  RPROMPT='%{%(!.$bg[default].%(?.$bg[yellow].$bg[yellow]))%}[`date +%Y/%m/%d` %T]%{$reset_color%}'
-fi
+DEFAULT=$'%n@%m:%(5~,%-2~/.../%2~,%~) \U1F423 '
+SUCCESS=$'%n@%m:%(5~,%-2~/.../%2~,%~) \U1F425 '
+ERROR=$'%n@%m:%(5~,%-2~/.../%2~,%~) \U1F373 '
+PROMPT=$'%(?.%F{yellow}${DEFAULT}.%F{red}${ERROR})%{$reset_color%} '
+#PROMPT=$'%($bg[yellow].${DEFAULT})%(?.%($bg[blue].${SUCCESS}).%($bg[red].${ERROR})) '
+
+#if [ $SSH_CONNECTION ] || [ $REMOTEHOST ]; then
+#  PROMPT='%{%(!.$bg[default].%(?.$bg[blue].$bg[blue]))%}%n@%m:%(5~,%-2~/.../%2~,%~)%#%{$reset_color%} '
+#  RPROMPT='%{%(!.$bg[default].%(?.$bg[blue].$bg[blue]))%}[`date +%Y/%m/%d` %T]%{$reset_color%}'
+#else
+#  PROMPT='%{%(!.$bg[default].%(?.$bg[yellow].$bg[yellow]))%}%n@%m:%(5~,%-2~/.../%2~,%~)%#%{$reset_color%} '
+#  RPROMPT='%{%(!.$bg[default].%(?.$bg[yellow].$bg[yellow]))%}[`date +%Y/%m/%d` %T]%{$reset_color%}'
+#fi
 
 # Misc "{{{1
 umask 022
@@ -165,7 +171,16 @@ alias s='screen -R'
 alias v='vim'
 alias r='R'
 alias emacs='open -a /Applications/Emacs.app'
-alias n='/Users/iNut/local/bin/nano -x'
-alias nv='/Users/iNut/local/bin/nano -xv'
-alias ohayau='ruby /Users/iNut/ohayau/ohayau.rb'
-alias cutname='sed -e "s:\s\+:,:g" | cut -d "," -f 9'
+alias n='nano -x'
+alias nv='nano -xv'
+alias tawk='awk -F "\t"'
+
+# configuration for boxen
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+[ -f /opt/boxen/nvm/nvm.sh ] && source /opt/boxen/nvm/nvm.sh
+
+# zsh-notify
+autoload -U add-zsh-hook
+source ~/.zsh.d/zsh-notify/notify.plugin.zsh
+export SYS_NOTIFIER="/opt/boxen/homebrew/bin/terminal-notifier"
+export NOTIFY_COMMAND_COMPLETE_TIMEOUT=17
