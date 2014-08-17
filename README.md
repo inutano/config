@@ -1,5 +1,10 @@
-# configuration files for OS X
+## Dotfiles
 
-- エディタがnanoで何が悪い
-- $HOME="/Users/iNut"
-- include settings for RVM, gisty in .zshrc
+Born to add lines to dotfiles.
+
+### My Favorites
+
+- zsh
+- tmux
+- nano
+- git
