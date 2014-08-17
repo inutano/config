@@ -1,16 +1,27 @@
-[user]
-  name = tazro inutano ohta
-  email = inutano@gmail.com
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+
 [core]
-  autocrlf = input
-  safecrlf = true
+excludesfile = /opt/boxen/config/git/gitignore
+autocrlf = input
+safecrlf = true
+
+[hub]
+protocol = https
+
+[user]
+name = tazro inutano ohta
+email = inutano@gmail.com
+
 [alias]
-  co = checkout
-  cmt = commit -m
-  st = status
-  br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
+co = checkout
+cmt = commit -m
+st = status
+br = branch
+hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+type = cat-file -t
+dump = cat-file -p
+
 [color]
-  ui = auto
+ui = auto
