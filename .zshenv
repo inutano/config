@@ -16,7 +16,7 @@ export MANPATH=$HOME/local/perl/current/man:$MANPATH
 export PERL5LIB=$HOME/local/perl/current/lib/perl5:/System/Library/Perl/Extras/5.8.8:$PERL5LIB
 
 # for RVM
-if [[ -s /Users/iNut/.rvm/scripts/rvm ]] ; then source /Users/iNut/.rvm/scripts/rvm ; fi
+if [[ -s /Users/inutano/.rvm/scripts/rvm ]] ; then source /Users/inutano/.rvm/scripts/rvm ; fi
 
 # for gisty
 export GISTY_DIR="$HOME/togofarm/gist"
