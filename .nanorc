@@ -61,7 +61,6 @@ include ~/.nano/nginx.nanorc
 include ~/.nano/patch.nanorc
 include ~/.nano/peg.nanorc
 include ~/.nano/perl.nanorc
-include ~/.nano/php.nanorc
 include ~/.nano/pkg-config.nanorc
 include ~/.nano/pkgbuild.nanorc
 include ~/.nano/po.nanorc
@@ -71,8 +70,8 @@ include ~/.nano/python.nanorc
 include ~/.nano/reST.nanorc
 include ~/.nano/rpmspec.nanorc
 include ~/.nano/ruby.nanorc
+include ~/.nano/scala.nanorc
 include ~/.nano/sed.nanorc
-include ~/.nano/sh.nanorc
 include ~/.nano/sql.nanorc
 include ~/.nano/systemd.nanorc
 include ~/.nano/tex.nanorc
@@ -82,4 +81,10 @@ include ~/.nano/xml.nanorc
 include ~/.nano/xresources.nanorc
 include ~/.nano/yaml.nanorc
 include ~/.nano/yum.nanorc
-include ~/.nano/zshrc.nanorc
+
+
+## regexp error with 2.3.4, fix later, maybe
+#include ~/.nano/php.nanorc
+#include ~/.nano/puppet.nanorc
+#include ~/.nano/zsh.nanorc
+#include ~/.nano/sh.nanorc
