@@ -1,22 +1,46 @@
+# auto indentation
 set autoindent
+
+# save backup for sudden death of nano
 set backup
-set backupdir "/Users/inutano/tmp"
-set backwards
-set brackets ""')>]}"
-set casesensitive
-set matchbrackets "(<[{)>]}"
-set regexp
-set morespace
-set multibuffer
-set smooth
+set backupdir "~/tmp"
 set tempfile
-set boldtext
 set historylog
+
+# allow nano to be suspended
 set suspend
+
+# setting brackets
+set brackets ""')>]}"
+set matchbrackets "(<[{)>]}"
+
+set regexp
+set casesensitive
+set backwards
+
+# expert mode
+set morespace
+
+# multibuffer
+set multibuffer
+
+# smooth scrolling
+set smooth
+
+# set tab size
 set tabsize 2
 set const
 
+# no new lines, no!
+set nonewlines
+
+# wrapping text in lines
+set nowrap
 set softwrap
+
+# undo
+#set undo
+
 include ~/.nano/apacheconf.nanorc
 include ~/.nano/asm.nanorc
 include ~/.nano/awk.nanorc
@@ -81,10 +105,9 @@ include ~/.nano/xml.nanorc
 include ~/.nano/xresources.nanorc
 include ~/.nano/yaml.nanorc
 include ~/.nano/yum.nanorc
-
+include ~/.nano/zsh.nanorc
+include ~/.nano/sh.nanorc
 
 ## regexp error with 2.3.4, fix later, maybe
 #include ~/.nano/php.nanorc
 #include ~/.nano/puppet.nanorc
-#include ~/.nano/zsh.nanorc
-#include ~/.nano/sh.nanorc
