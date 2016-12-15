@@ -1,28 +1,43 @@
+[user]
+  name  = Tazro Inutano Ohta
+  email = inutano@gmail.com
 
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
+[github]
+  user = inutano
 
 [core]
-excludesfile = /opt/boxen/config/git/gitignore
-autocrlf = input
-safecrlf = true
+  editor = nano
+  autocrlf = input
+  safecrlf = true
 
-[hub]
-protocol = https
-
-[user]
-name = tazro inutano ohta
-email = inutano@gmail.com
-
-[alias]
-co = checkout
-cmt = commit -m
-st = status
-br = branch
-hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-type = cat-file -t
-dump = cat-file -p
-ls = ls-files
+[web]
+  browser = safari
 
 [color]
-ui = auto
+  ui = auto
+
+[color "branch"]
+  current = yellow bold
+  local   = green bold
+  remote  = cyan bold
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old  = red bold
+  new  = green bold
+  whitespace = red reverse
+
+[color "status"]
+  added     = green bold
+  changed   = yellow bold
+  untracked = red bold
+
+[alias]
+  cmt = commit -m
+  st = status
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  ls = ls-files
+
+[hub]
+  protocol = https
