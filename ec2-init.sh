@@ -14,9 +14,9 @@ if [ "${1}" != "--install" ]; then
 
     - as newly created admin
 
-    $ mkdir ${HOME}/.ssh
+    $ mkdir \${HOME}/.ssh
     $ chmod 700 .ssh
-    $ echo <ssh-publickey> >> ${HOME}/.ssh/authorized_keys
+    $ echo <ssh-publickey> >> \${HOME}/.ssh/authorized_keys
     $ exit
 
     - as ec2-user
@@ -34,6 +34,7 @@ if [ "${1}" != "--install" ]; then
     $ sudo userdel -r ec2-user
 
     - To install packages, run: ec2-init.sh --install
+    - or curl "https://raw.githubusercontent.com/inutano/config/master/ec2-init.sh" | sh -s "--install"
 EOS
   exit 1
 fi
