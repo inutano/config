@@ -2,14 +2,51 @@
 # init.sh - initialize script for AWS EC2 instance, amazon linux
 #
 
+if [ "${1}" != "--install" ]; then
+  cat << EOS
+    Setup user before starting configuration:
+
+    - as ec2-user
+
+    $ sudo useradd <admin name>
+    $ sudo passwd <admin passwd>
+    $ sudo su <admin name>
+
+    - as newly created admin
+
+    $ mkdir ${HOME}/.ssh
+    $ chmod 700 .ssh
+    $ echo <ssh-publickey> >> ${HOME}/.ssh/authorized_keys
+    $ exit
+
+    - as ec2-user
+
+    $ sudo visudo
+
+    Defaults timestamp_timeout = 3
+    <admin name>  ALL = (ALL) NOPASSWD: ALL, !/bin/su
+
+    $ echo 'SU_WHEEL_ONLY yes' | sudo tee -a /etc/login.defs
+    $ echo 'auth required /lib64/security/pam_wheel.so use_uid' | sudo tee -a /etc/pam.d/su
+
+    - as newly created admin
+
+    $ sudo userdel -r ec2-user
+
+    - To install packages, run: ec2-init.sh --install
+EOS
+  exit 1
+fi
+
 # update yum and install packages
-sudo yum update -y && sudo yum install -y curl gcc openssl-devel readline-devel zlib-devel zsh git nano tmux nginx
+sudo yum update -y && sudo yum install -y curl gcc openssl-devel readline-devel zlib-devel zsh git nano tmux nginx aws
 
 # setup timezone
 echo -e 'ZONE="Asia/Tokyo"\nUTC=false' | sudo tee /etc/sysconfig/clock
 sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # setup language
+sudo locale-gen ja_JP.UTF-8
 echo "LANG=ja_JP.UTF-8" | sudo tee /etc/sysconfig/i18n
 
 # path to config files
@@ -51,24 +88,8 @@ fi
 # interactive setup
 
 cat << EOS
+
 Automatic configuration done. Your next step is:
-
-- setup root
-
-$ sudo useradd <admin name>
-$ sudo su <admin name>
-$ echo <ssh-publickey> ${HOME}/.ssh/authorized_keys
-$ sudo visudo
-
-Defaults timestamp_timeout = 3
-<admin name>  ALL = (ALL) NOPASSWD: ALL, !/bin/su
-
-$ echo 'SU_WHEEL_ONLY yes' | sudo tee -a /etc/login.defs
-$ echo 'auth required /lib64/security/pam_wheel.so use_uid' | sudo tee -a /etc/pam.d/su
-
-- erase ec2-user
-
-$ sudo userdel -r ec2-user
 
 - ssh login setup
 
