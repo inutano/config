@@ -3,7 +3,7 @@
 #
 
 # update yum and install packages
-sudo yum update -y && sudo yum install -y curl zsh git nano tmux nginx
+sudo yum update -y && sudo yum install -y curl gcc zsh git nano tmux nginx
 
 # setup dotfiles
 git clone https://github.com/inutano/config.git $HOME/.config
