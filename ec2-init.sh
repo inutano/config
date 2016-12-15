@@ -41,7 +41,7 @@ EOS
 fi
 
 # update yum and install packages
-sudo yum update -y && sudo yum install -y curl gcc openssl-devel readline-devel zlib-devel zsh git nano tmux nginx aws
+sudo yum update -y && sudo yum install -y curl gcc openssl-devel readline-devel zlib-devel zsh git nano tmux nginx aws awslogs
 
 # setup timezone
 echo -e 'ZONE="Asia/Tokyo"\nUTC=false' | sudo tee /etc/sysconfig/clock
@@ -91,6 +91,25 @@ if [ ! -e "${rbenv_path}" ]; then
   gem install bundler
 fi
 
+# setup aws cloudwatch log
+cat <<EOS >> /etc/awslogs/awslogs.conf
+  [/var/log/nginx/access.log]
+  datetime_format = %b %d %H:%M:%S
+  file = /var/log/nginx/access.log
+  buffer_duration = 5000
+  log_stream_name = {instance_id}
+  initial_position = start_of_file
+  log_group_name = /var/log/nginx/access.log
+
+  [/var/log/nginx/error.log]
+  datetime_format = %b %d %H:%M:%S
+  file = /var/log/nginx/error.log
+  buffer_duration = 5000
+  log_stream_name = {instance_id}
+  initial_position = start_of_file
+  log_group_name = /var/log/nginx/error.log
+EOS
+sudo service awslogs start
 
 # interactive setup
 
