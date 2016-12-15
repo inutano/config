@@ -12,25 +12,40 @@ sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # setup language
 echo "LANG=ja_JP.UTF-8" | sudo tee /etc/sysconfig/i18n
 
+# path to config files
+config_path="${HOME}/.config"
+ohmyzsh_path="${HOME}/.oh-my-zsh"
+nanoconfig_path="${HOME}/.nano"
+rbenv_path="${HOME}/.rbenv"
+
 # setup dotfiles
-git clone https://github.com/inutano/config.git $HOME/.config
-sh $HOME/.config/copy.sh
+if [ ! -e "${config_path}" ]; then
+  git clone https://github.com/inutano/config.git ${config_path}
+  sh ${HOME}/.config/copy.sh
+fi
 
 # setup zsh
-git clone https://github.com/inutano/oh-my-zsh.git $HOME/.oh-my-zsh
-cp $HOME/.oh-my-zsh/.zshrc $HOME
-source $HOME/.zshrc
+if [ ! -e "${ohmyzsh_path}" ]; then
+  git clone https://github.com/inutano/oh-my-zsh.git ${ohmyzsh_path}
+  cp ${HOME}/.oh-my-zsh/.zshrc ${HOME}
+  source ${HOME}/.zshrc
+fi
 
 # setup nano
-git clone https://github.com/inutano/nanorc.git $HOME/.nano
-cp $HOME/.nano/.nanorc $HOME
+if [ ! -e "${nanoconfig_path}" ]; then
+  git clone https://github.com/inutano/nanorc.git ${nanoconfig_path}
+  cp ${HOME}/.nano/.nanorc ${HOME}
+fi
 
 # install ruby
-git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
-git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-rbenv install 2.3.0
-rbenv rehash
-gem install bundler
+if [ ! -e "${rbenv_path}" ]; then
+  git clone https://github.com/rbenv/rbenv.git ${rbenv_path}
+  git clone https://github.com/rbenv/ruby-build.git ${rbenv_path}/plugins/ruby-build
+  rbenv install 2.3.0
+  rbenv rehash
+  rbenv global 2.3.0
+  gem install bundler
+fi
 
 
 # interactive setup
@@ -42,7 +57,7 @@ Automatic configuration done. Your next step is:
 
 $ sudo useradd <admin name>
 $ sudo su <admin name>
-$ echo <ssh-publickey> $HOME/.ssh/authorized_keys
+$ echo <ssh-publickey> ${HOME}/.ssh/authorized_keys
 $ sudo visudo
 
 Defaults timestamp_timeout = 3
@@ -69,6 +84,6 @@ $ aws configure
 AWS Access Key ID [None]: XXXXXXXXXXXXXXXXXXXX
 AWS Secret Access Key [None]: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Default region name [None]: ap-northeast-1
-Default output format [None]: 
+Default output format [None]:
 
 EOS
