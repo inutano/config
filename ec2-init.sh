@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # init.sh - initialize script for AWS EC2 instance, amazon linux
 #
@@ -66,7 +67,6 @@ fi
 if [ ! -e "${ohmyzsh_path}" ]; then
   git clone https://github.com/inutano/oh-my-zsh.git ${ohmyzsh_path}
   cp ${HOME}/.oh-my-zsh/.zshrc ${HOME}
-  source ${HOME}/.zshrc
 fi
 
 # setup nano
@@ -79,6 +79,10 @@ fi
 if [ ! -e "${rbenv_path}" ]; then
   git clone https://github.com/rbenv/rbenv.git ${rbenv_path}
   git clone https://github.com/rbenv/ruby-build.git ${rbenv_path}/plugins/ruby-build
+
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+  source "${HOME}/.bash_profile"
+
   rbenv install 2.3.0
   rbenv rehash
   rbenv global 2.3.0
@@ -107,5 +111,11 @@ AWS Access Key ID [None]: XXXXXXXXXXXXXXXXXXXX
 AWS Secret Access Key [None]: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Default region name [None]: ap-northeast-1
 Default output format [None]:
+
+- change default shell to zsh
+
+$ chsh
+
+/bin/zsh
 
 EOS
