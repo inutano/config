@@ -50,6 +50,8 @@ sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 # setup language
 sudo locale-gen ja_JP.UTF-8
 echo "LANG=ja_JP.UTF-8" | sudo tee /etc/sysconfig/i18n
+echo "LC_ALL=ja_JP.UTF-8" | sudo tee /etc/sysconfig/i18n
+echo "LC_CTYPE=ja_JP.UTF-8" | sudo tee /etc/sysconfig/i18n
 
 # path to config files
 config_path="${HOME}/.config"
