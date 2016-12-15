@@ -12,6 +12,7 @@ sh $HOME/.config/copy.sh
 # setup zsh
 git clone https://github.com/inutano/oh-my-zsh.git $HOME/.oh-my-zsh
 cp $HOME/.oh-my-zsh/.zshrc $HOME
+source $HOME/.zshrc
 
 # setup nano
 git clone https://github.com/inutano/nanorc.git $HOME/.nano
