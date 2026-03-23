@@ -115,4 +115,4 @@ mamba() { __init_conda && mamba "$@"; }
 source /Users/inutano/.docker/init-bash.sh || true # Added by Docker Desktop
 
 # Tmux: attach or create default session
-alias ts='tmux new-session -A -s default'
+alias ts='tmux new-session -A -D -s default'
